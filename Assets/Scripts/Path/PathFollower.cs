@@ -42,7 +42,7 @@ namespace PathCreation.Examples
         {
             if(target.tag == "ElectricPump"){
                 if(speed > 0 && fuel <= 100){
-                    Debug.Log("Stoping");
+                    //Debug.Log("Stoping");
                     speed -= 1.0f;
                 }  
                
@@ -58,7 +58,7 @@ namespace PathCreation.Examples
         private void OnTriggerEnter(Collider target)
         {
             if(target.tag == "Finish"){
-                Debug.Log("Destroy");
+                //Debug.Log("Destroy");
                 Destroy(gameObject);
             }
         }
