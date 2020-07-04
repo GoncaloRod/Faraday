@@ -186,6 +186,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Building",
+            "id": "0cfe745c-0a90-4266-adc1-2189377c1122",
+            "actions": [
+                {
+                    "name": "Build",
+                    "type": "Button",
+                    "id": "c25a35d3-110d-4978-9d93-845e7b851fc2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f5bd7f0c-699b-4e2a-8a42-c805c074172b",
+                    "path": "<Mouse>/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Build",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
