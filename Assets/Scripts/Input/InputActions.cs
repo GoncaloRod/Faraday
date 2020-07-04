@@ -199,6 +199,33 @@ public class @InputActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Building"",
+            ""id"": ""0cfe745c-0a90-4266-adc1-2189377c1122"",
+            ""actions"": [
+                {
+                    ""name"": ""Build"",
+                    ""type"": ""Button"",
+                    ""id"": ""c25a35d3-110d-4978-9d93-845e7b851fc2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""f5bd7f0c-699b-4e2a-8a42-c805c074172b"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Build"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -208,6 +235,9 @@ public class @InputActions : IInputActionCollection, IDisposable
         m_CameraControls_Movement = m_CameraControls.FindAction("Movement", throwIfNotFound: true);
         m_CameraControls_Rotation = m_CameraControls.FindAction("Rotation", throwIfNotFound: true);
         m_CameraControls_Zoom = m_CameraControls.FindAction("Zoom", throwIfNotFound: true);
+        // Building
+        m_Building = asset.FindActionMap("Building", throwIfNotFound: true);
+        m_Building_Build = m_Building.FindAction("Build", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -302,10 +332,47 @@ public class @InputActions : IInputActionCollection, IDisposable
         }
     }
     public CameraControlsActions @CameraControls => new CameraControlsActions(this);
+
+    // Building
+    private readonly InputActionMap m_Building;
+    private IBuildingActions m_BuildingActionsCallbackInterface;
+    private readonly InputAction m_Building_Build;
+    public struct BuildingActions
+    {
+        private @InputActions m_Wrapper;
+        public BuildingActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Build => m_Wrapper.m_Building_Build;
+        public InputActionMap Get() { return m_Wrapper.m_Building; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BuildingActions set) { return set.Get(); }
+        public void SetCallbacks(IBuildingActions instance)
+        {
+            if (m_Wrapper.m_BuildingActionsCallbackInterface != null)
+            {
+                @Build.started -= m_Wrapper.m_BuildingActionsCallbackInterface.OnBuild;
+                @Build.performed -= m_Wrapper.m_BuildingActionsCallbackInterface.OnBuild;
+                @Build.canceled -= m_Wrapper.m_BuildingActionsCallbackInterface.OnBuild;
+            }
+            m_Wrapper.m_BuildingActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Build.started += instance.OnBuild;
+                @Build.performed += instance.OnBuild;
+                @Build.canceled += instance.OnBuild;
+            }
+        }
+    }
+    public BuildingActions @Building => new BuildingActions(this);
     public interface ICameraControlsActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotation(InputAction.CallbackContext context);
         void OnZoom(InputAction.CallbackContext context);
+    }
+    public interface IBuildingActions
+    {
+        void OnBuild(InputAction.CallbackContext context);
     }
 }
