@@ -9,8 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2039271277187352215}
+  - component: {fileID: 7495289247342566828}
   m_Layer: 0
-  m_Name: Eletrical Box
+  m_Name: Electrical Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,6 +32,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7495289247342566828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6030716268824190515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1198fbdcd506ca44eb4e49a157c96e3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  name: Electrical Box
+  icon: {fileID: 0}
+  cost: 100
+  size: {x: 1, y: 1}
 --- !u!1 &7650732911889514537
 GameObject:
   m_ObjectHideFlags: 0

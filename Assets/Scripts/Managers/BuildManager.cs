@@ -23,7 +23,11 @@ public class BuildManager : MonoBehaviour
     [SerializeField] private GameObject electricalBoxPrefab;
     [SerializeField] private GameObject chargingStationPrefab;
 
+    [SerializeField] private float initialBalance = 1000f;
+
     public GameObject currentlyBuilding = null;
+
+    public float Balance { get; private set; }
 
     private void Awake()
     {
@@ -41,6 +45,11 @@ public class BuildManager : MonoBehaviour
         _camera = Camera.main;
 
         _inputActions.Building.Build.performed += ctx => Build();
+    }
+
+    private void Start()
+    {
+        Balance = initialBalance;
     }
 
     private void Update()
@@ -80,9 +89,16 @@ public class BuildManager : MonoBehaviour
 
             if (plot != null)
             {
-                Slot slot = plot.GetNearestSlot(hit.point);
-
                 Building building = currentlyBuilding.GetComponent<Building>();
+
+                if (Balance < building.Cost)
+                {
+                    // TODO: Sound effect
+
+                    return;
+                }
+
+                Slot slot = plot.GetNearestSlot(hit.point);
 
                 if (building == null)
                     throw new Exception($"Mate '{currentlyBuilding.name}' is not a building!");
@@ -90,6 +106,8 @@ public class BuildManager : MonoBehaviour
                 if (IsPositionValid(plot, slot, building.Size, out Vector2Int topRight, out Vector2Int bottomLeft))
                 {
                     Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
+
+                    Balance -= building.Cost;
 
                     // Mark slots as unavailable
                     for (int y = bottomLeft.y; y <= topRight.y; y++)
