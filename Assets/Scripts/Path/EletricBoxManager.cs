@@ -20,7 +20,7 @@ public class EletricBoxManager : MonoBehaviour
         //Debug.Log (SolarPanels.Length);
         //Debug.Log(transform.GetChild(0));
         genNumber = 1;
-        addSolarPanel(ref genNumber);
+        //addSolarPanel(ref genNumber);
 
     }
 
@@ -31,18 +31,16 @@ public class EletricBoxManager : MonoBehaviour
             if(SolarPanels[c].activeSelf){
                 genNumber += 1;
                 Debug.Log("Active");
-            }
-
-            
+            }       
         }*/
-        powerGenerated += genNumber * 2;
+        powerGenerated += (float)System.Math.Round(genNumber * 0.1f, 2);
     }
 
     public void GroupResize (int Size, ref GameObject[] Group)
     {
-         
+        
      GameObject[] temp = new GameObject[Size];
-     for (int c = 1; c < Mathf.Min(Size, Group.Length); c++ ) {
+     for (int c = 0; c < Mathf.Min(Size, Group.Length); c++ ) {
          temp [c] = Group [c];
      }
      Group = temp;
@@ -50,9 +48,9 @@ public class EletricBoxManager : MonoBehaviour
 
     public void addSolarPanel (ref int gen)
     {
-        gen ++;
-        for (int c = 1; c < SolarPanels.Length; c++ ) {
+        for (int c = 0; c < SolarPanels.Length; c++ ) {
             if(!SolarPanels[c].activeSelf){
+                gen ++;
                 SolarPanels[c].SetActive(true);
                 break;
             }  
