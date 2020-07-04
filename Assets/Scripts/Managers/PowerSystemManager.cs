@@ -50,6 +50,8 @@ public class PowerSystemManager : MonoBehaviour
 
     void Update()
     {
+        _currentEnergyInput = 0;
+
         foreach (GameObject solarPanel in _solarPanels)
         {
             _currentEnergyInput += solarPanel.GetComponent<SolarPanel>().CurrentOutput * Time.deltaTime;
