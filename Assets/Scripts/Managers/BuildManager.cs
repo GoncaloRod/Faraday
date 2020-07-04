@@ -4,12 +4,19 @@ using UnityEngine.InputSystem;
 
 public class BuildManager : MonoBehaviour
 {
+    #region Singleton
+    
+    private static BuildManager _instance;
+
+    public static BuildManager Instance => _instance;
+
+    #endregion
+
     private InputActions _inputActions;
     
     private Camera _camera;
 
-    [SerializeField] private LayerMask groundLayer;
-
+    // This disappear once UI is done
     [Header("Prefabs")]
     [SerializeField] private GameObject batteryPrefab;
     [SerializeField] private GameObject solarPanelPrefab;
@@ -20,6 +27,15 @@ public class BuildManager : MonoBehaviour
 
     private void Awake()
     {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+
         _inputActions = new InputActions();
 
         _camera = Camera.main;
@@ -29,8 +45,6 @@ public class BuildManager : MonoBehaviour
 
     private void Update()
     {
-        
-
         if (Keyboard.current.digit1Key.wasPressedThisFrame)
         {
             currentlyBuilding = solarPanelPrefab;
