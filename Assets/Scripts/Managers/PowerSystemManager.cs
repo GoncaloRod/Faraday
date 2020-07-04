@@ -12,6 +12,8 @@ public class PowerSystemManager : MonoBehaviour
 
     #endregion
 
+    private float _timer;
+
     private float _storedEnergy = 0f;
     private float _energyCapacity = 0f;
 
@@ -28,9 +30,9 @@ public class PowerSystemManager : MonoBehaviour
     
     public float EnergyCapacity => _energyCapacity;
 
-    public float CurrentEnergyInput => _currentEnergyInput;
-    
-    public float CurrentEnergyOutput => _currentEnergyOutput;
+    public float CurrentEnergyInput { get; private set; } = 0f;
+
+    public float CurrentEnergyOutput { get; private set; } = 0f;
 
     public int SolarPanelCount => _solarPanels.Count;
 
@@ -50,20 +52,34 @@ public class PowerSystemManager : MonoBehaviour
 
     void Update()
     {
-        _currentEnergyInput = 0;
+        _timer += Time.deltaTime;
+
+        if (_timer >= 1f)
+        {
+            CurrentEnergyInput = _currentEnergyInput;
+            CurrentEnergyOutput = _currentEnergyOutput;
+
+            _currentEnergyInput = CurrentEnergyOutput = 0;
+            
+            _timer = 0f;
+        }
+
+        float input = 0;
 
         foreach (GameObject solarPanel in _solarPanels)
         {
-            _currentEnergyInput += solarPanel.GetComponent<SolarPanel>().CurrentOutput * Time.deltaTime;
+            input += solarPanel.GetComponent<SolarPanel>().CurrentOutput * Time.deltaTime;
         }
 
-        if (_storedEnergy + _currentEnergyInput > _energyCapacity)
+        _currentEnergyInput += input;
+
+        if (_storedEnergy + input > _energyCapacity)
         {
             _storedEnergy = _energyCapacity;
         }
         else
         {
-            _storedEnergy += _currentEnergyInput;
+            _storedEnergy += input;
         }
     }
 
