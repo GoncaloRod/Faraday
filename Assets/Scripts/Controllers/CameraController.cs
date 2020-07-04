@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         _newRotation *= Quaternion.Euler(Vector3.up * (rotationInput * rotationSpeed * Time.deltaTime));
         _newZoom += new Vector3(0, -1, 1) * (zoomInput * zoomSpeed * Time.deltaTime);
 
-        if (_newZoom.y >= cameraTarget.position.y + 1f)
+        if (_newZoom.y >= cameraTarget.position.y + 3f)
             _currentZoom = _newZoom;
         else
             _newZoom = _currentZoom;
