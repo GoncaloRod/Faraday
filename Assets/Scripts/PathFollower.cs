@@ -8,7 +8,10 @@ namespace PathCreation.Examples
     {
         public PathCreator pathCreator;
         public EndOfPathInstruction endOfPathInstruction;
+
+        //Car Variables
         public float speed = 5;
+        public float fuel = 0;
         float distanceTravelled;
 
         void Start() {
@@ -34,5 +37,31 @@ namespace PathCreation.Examples
         void OnPathChanged() {
             distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
         }
+
+         private void OnTriggerStay(Collider target)
+        {
+            if(target.tag == "ElectricPump"){
+                if(speed > 0 && fuel <= 100){
+                    Debug.Log("Stoping");
+                    speed -= 1.0f;
+                }  
+               
+                if(fuel == 100){
+                    speed = 5f;
+                }else{
+                    fuel += 1;
+
+                } 
+            }
+        }
+
+        private void OnTriggerEnter(Collider target)
+        {
+            if(target.tag == "Finish"){
+                Debug.Log("Destroy");
+                Destroy(gameObject);
+            }
+        }
+
     }
 }
