@@ -1,11 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
     public GameObject shopBar;
     public GameObject battery;
+    public TextMeshProUGUI balanceText;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +19,14 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        float energyInput = PowerSystemManager.Instance.CurrentEnergyInput;
+        float energyOutput = PowerSystemManager.Instance.CurrentEnergyOutput;
+        float energyConverted = PowerSystemManager.Instance.StoredEnergy / PowerSystemManager.Instance.EnergyCapacity;
+        if(energyConverted > 0.0f) 
+            BatteryController.Instance.SetCharge((int) (energyConverted * 10));
+
+        BatteryController.Instance.SetInputAndOutput(energyInput, energyOutput);
+        UpdateBalanceText();
     }
 
     public void ToggleShopBar()
@@ -38,15 +48,5 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private int charge = 0;
-    public void GoBatteryUp()
-    {
-        BatteryController.Instance.SetCharge(++charge);
-    }
-
-    public void GoBatteryDown()
-    {
-        BatteryController.Instance.SetCharge(--charge);
-    }
-
+    private void UpdateBalanceText() => balanceText.SetText($"{BuildManager.Instance.Balance:F2}");
 }

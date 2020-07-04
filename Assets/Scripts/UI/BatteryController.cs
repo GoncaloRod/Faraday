@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BatteryController : MonoBehaviour
@@ -12,7 +13,8 @@ public class BatteryController : MonoBehaviour
 
     #endregion
 
-    public GameObject BarsObject;
+    public GameObject barsObject;
+    public TextMeshProUGUI inputText, outputText;
     private GameObject[] _bars;
 
     private void Awake()
@@ -24,12 +26,12 @@ public class BatteryController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int size = BarsObject.transform.childCount;
+        int size = barsObject.transform.childCount;
         _bars = new GameObject[size];
 
         for (int i = 0; i < size; ++i)
         {
-            _bars[i] = BarsObject.transform.GetChild(i).gameObject;
+            _bars[i] = barsObject.transform.GetChild(i).gameObject;
         }
     }
 
@@ -47,5 +49,11 @@ public class BatteryController : MonoBehaviour
             // Value - 1 it's converts the first bar of the battery to the first array element
             gb.SetActive(value - 1 >= i);
         }
+    }
+
+    public void SetInputAndOutput(float input, float output)
+    {
+        inputText.SetText($"{input:F2} KW/S");
+        outputText.SetText($"{output:F2} KW/S");
     }
 }
