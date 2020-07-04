@@ -8,10 +8,12 @@ namespace PathCreation.Examples
     {
         public PathCreator pathCreator;
         public EndOfPathInstruction endOfPathInstruction;
+        public GameObject PowerSystem;
 
         //Car Variables
         public float speed = 5;
         public float fuel = 0;
+
         float distanceTravelled;
 
         void Start() {
@@ -42,23 +44,24 @@ namespace PathCreation.Examples
         {
             if(target.tag == "ElectricPump"){
                 if(speed > 0 && fuel <= 100){
-                    //Debug.Log("Stoping");
-                    speed -= 1.0f;
+                    speed -= 1.0f;                  
                 }  
-               
-                if(fuel == 100){
-                    speed = 5f;
-                }else{
-                    fuel += 1;
-
+                if(speed == 0){
+                    if(fuel == 100){
+                        speed = 5f;
+                    }else{
+                        if(PowerSystem.GetComponent<PowerSystemManager>().powerAvailable - 10.0f > 0.0f){
+                        PowerSystem.GetComponent<PowerSystemManager>().powerUsed -= 10.0f;
+                        fuel += 10;
+                        }
                 } 
+                }
             }
         }
 
         private void OnTriggerEnter(Collider target)
         {
             if(target.tag == "Finish"){
-                //Debug.Log("Destroy");
                 Destroy(gameObject);
             }
         }

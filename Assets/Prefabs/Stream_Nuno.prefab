@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 391740971}
   - component: {fileID: 391740970}
   - component: {fileID: 391740969}
+  - component: {fileID: 391740972}
   m_Layer: 0
   m_Name: Battery
   m_TagString: Untagged
@@ -131,7 +132,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391740967}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.75, y: 0.15, z: 0}
+  m_LocalPosition: {x: -5.75, y: 0.19, z: 0}
   m_LocalScale: {x: 0.31164, y: 0.31164, z: 0.31164}
   m_Children: []
   m_Father: {fileID: 725342545}
@@ -197,6 +198,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &391740972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391740967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9f719a847fb8f42a1252eb92e0ee8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ElectricalBoxes:
+  - {fileID: 2026114298}
+  energyStored: 0
 --- !u!1 &725342544
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +222,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 725342545}
-  - component: {fileID: 725342546}
   m_Layer: 0
   m_Name: Batteries
   m_TagString: Untagged
@@ -229,18 +244,6 @@ Transform:
   m_Father: {fileID: 1730013914}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &725342546
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 725342544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a9f719a847fb8f42a1252eb92e0ee8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &819805551
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,6 +353,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pathCreator: {fileID: 296239132}
   endOfPathInstruction: 0
+  PowerSystem: {fileID: 1730013913}
   speed: 5
   fuel: 0
 --- !u!54 &1563493241
@@ -1016,6 +1020,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e41cef90ca12144aff53dfcc0721d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Batteries:
+  - {fileID: 391740967}
+  powerMade: 0
+  powerUsed: 0
+  powerAvailable: 0
 --- !u!1 &2026114298
 GameObject:
   m_ObjectHideFlags: 0
