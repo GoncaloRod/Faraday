@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -666,6 +666,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1752923247}
   - component: {fileID: 1752923246}
+  - component: {fileID: 1752923248}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -685,9 +686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9184d0b1f5ca347836d100943ee6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 256
   batteryPrefab: {fileID: 6275309927873899446, guid: c4c230b010389a740b1a656a1bf7f4de,
     type: 3}
   solarPanelPrefab: {fileID: 9023081424958144559, guid: f2d18ebb992defd49ba1e37012e8c711,
@@ -696,6 +694,7 @@ MonoBehaviour:
     type: 3}
   chargingStationPrefab: {fileID: 2776266389825161011, guid: bf4850f3084cc8840b29121b7bcd1a82,
     type: 3}
+  initialBalance: 1000
   currentlyBuilding: {fileID: 0}
 --- !u!4 &1752923247
 Transform:
@@ -711,6 +710,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1752923248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752923245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e41cef90ca12144aff53dfcc0721d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerMade: 0
+  powerUsed: 0
+  powerAvailable: 0
+  maxSolarPanels: 0
+  maxEnergyCap: 0
+  SolarPanelsList: []
+  BatteriesList: []
+  ElectricBoxesList: []
 --- !u!1 &1939473232
 GameObject:
   m_ObjectHideFlags: 0
