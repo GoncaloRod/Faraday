@@ -105,7 +105,7 @@ public class BuildManager : MonoBehaviour
 
                 if (IsPositionValid(plot, slot, building.Size, out Vector2Int topRight, out Vector2Int bottomLeft))
                 {
-                    Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
+                    GameObject buildingObject = Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
 
                     Balance -= building.Cost;
 
@@ -116,6 +116,19 @@ public class BuildManager : MonoBehaviour
                         {
                             plot.Grid[y, x].IsAvailable = false;
                         }
+                    }
+
+                    switch (building)
+                    {
+                        case SolarPanel solarPanel:
+                            PowerSystemManager.Instance.AddSolarPanel(buildingObject);
+                            break;
+                        case Battery battery:
+                            PowerSystemManager.Instance.AddBattery(buildingObject);
+                            break;
+                        case ElectricalBox electricalBox:
+                            PowerSystemManager.Instance.AddElectricalBox(buildingObject);
+                            break;
                     }
                 }
             }

@@ -49,9 +49,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   cost: 100
   size: {x: 1, y: 1}
+  optimumPowerOutput: 10
   timeToDirty: 600
   cleaningDownTime: 60
-  optimumPowerOutput: 100
 --- !u!1001 &4588198686721410488
 PrefabInstance:
   m_ObjectHideFlags: 0

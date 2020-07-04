@@ -42,6 +42,7 @@ namespace PathCreation.Examples
 
          private void OnTriggerStay(Collider target)
         {
+            /*
             if(target.tag == "ElectricPump"){
                 if(speed > 0 && fuel <= 100){
                     speed -= 1.0f;                  
@@ -57,6 +58,7 @@ namespace PathCreation.Examples
                 } 
                 }
             }
+            */
         }
 
         private void OnTriggerEnter(Collider target)
