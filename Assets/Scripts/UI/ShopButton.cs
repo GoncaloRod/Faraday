@@ -11,6 +11,8 @@ public class ShopButton : MonoBehaviour
     public TextMeshProUGUI priceCost;
 
     public Button buttonImage;
+
+    public AudioSource buySound;
     // Start is called before the first frame update
     private Building _building;
 

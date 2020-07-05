@@ -71,7 +71,8 @@ public class BuildManager : MonoBehaviour
                 if (Balance < building.Cost)
                 {
                     // TODO: Sound effect
-
+                    AudioManager.Instance.PlayBuildSound();
+                    
                     return;
                 }
 
@@ -117,6 +118,7 @@ public class BuildManager : MonoBehaviour
                             Balance -= building.Cost;
                             break;
                     }
+                    currentlyBuilding = null;
                 }
             }
         }
@@ -132,6 +134,7 @@ public class BuildManager : MonoBehaviour
         if (Balance < chargingStation.Cost)
         {
             // TODO: Sound effect
+            AudioManager.Instance.PlayBuildSound();
 
             return;
         }

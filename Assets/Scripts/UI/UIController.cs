@@ -54,9 +54,7 @@ public class UIController : MonoBehaviour
         RectTransform battRectTransform = battery.GetComponent<RectTransform>();
         if (!shopBar.activeSelf)
         {
-            Debug.Log($"BattY: {battRectTransform.position.y} | ShopBarHeight: {shopBarHeight}");
             battRectTransform.position = new Vector3(battRectTransform.position.x, battRectTransform.position.y + shopBarHeight);
-            Debug.Log($"BattY: {battRectTransform.position.y} | ShopBarHeight: {shopBarHeight}");
             shopBar.SetActive(true);
         }
         else
@@ -81,7 +79,6 @@ public class UIController : MonoBehaviour
 
     public void Play()
     {
-        Time.timeScale = 1.0f;
         mainMenuUI.SetActive(false);
         gameUI.SetActive(true);
         clickSound.Play();
@@ -95,7 +92,6 @@ public class UIController : MonoBehaviour
 
     public void Menu()
     {
-        Time.timeScale = 0.0f;
         mainMenuUI.SetActive(true);
         clickSound.Play();
     }
