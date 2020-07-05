@@ -57,6 +57,7 @@ public class Car : MonoBehaviour
 
             if (currentEnergy == batteryCapacity && _getOutPoints.Count > 0)
             {
+                _destinationPad.Available = true;
                 _nextPoint = _getOutPoints.Dequeue();
             }
         }
