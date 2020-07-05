@@ -59,7 +59,7 @@ public class PowerSystemManager : MonoBehaviour
             CurrentEnergyInput = _currentEnergyInput;
             CurrentEnergyOutput = _currentEnergyOutput;
 
-            _currentEnergyInput = CurrentEnergyOutput = 0;
+            _currentEnergyInput = _currentEnergyOutput = 0;
             
             _timer = 0f;
         }
@@ -101,5 +101,16 @@ public class PowerSystemManager : MonoBehaviour
         _electricBoxes.Add(electricalBox);
 
         _solarPanelCapacity += electricalBox.GetComponent<ElectricalBox>().SolarPanelCapacity;
+    }
+
+    public float GetEnergy(float desiredAmount)
+    {
+        desiredAmount = Mathf.Clamp(desiredAmount, 0f, _storedEnergy);
+
+        _storedEnergy -= desiredAmount;
+
+        _currentEnergyOutput += desiredAmount;
+
+        return desiredAmount;
     }
 }

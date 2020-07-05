@@ -27,7 +27,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject currentlyBuilding = null;
 
-    public float Balance { get; private set; }
+    public float Balance;
 
     private void Awake()
     {
