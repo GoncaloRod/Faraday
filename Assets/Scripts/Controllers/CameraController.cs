@@ -13,6 +13,9 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform cameraTransform = null;
     [SerializeField] private Transform cameraTarget = null;
 
+    [SerializeField] private Transform bottomLeftCorner;
+    [SerializeField] private Transform topRightCorner;
+
     [SerializeField] private float smoothFactor = 1f;
 
     [SerializeField] private float movementSpeed = 1f;
@@ -41,6 +44,19 @@ public class CameraController : MonoBehaviour
         _newPosition += (transform.right * movementInput.x + transform.forward * movementInput.y) * (movementSpeed * Time.deltaTime);
         _newRotation *= Quaternion.Euler(Vector3.up * (rotationInput * rotationSpeed * Time.deltaTime));
         _newZoom += new Vector3(0, -1, 1) * (zoomInput * zoomSpeed * Time.deltaTime);
+
+        if (_newPosition.x < bottomLeftCorner.position.x)
+            _newPosition.x = bottomLeftCorner.position.x;
+
+        if (_newPosition.x > topRightCorner.position.x)
+            _newPosition.x = topRightCorner.position.x;
+
+        if (_newPosition.z < bottomLeftCorner.position.z)
+            _newPosition.z = bottomLeftCorner.position.z;
+
+        if (_newPosition.z > topRightCorner.position.z)
+            _newPosition.z = topRightCorner.position.z;
+
 
         if (_newZoom.y >= cameraTarget.position.y + 3f)
             _currentZoom = _newZoom;
