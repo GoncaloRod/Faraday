@@ -85,12 +85,18 @@ public class PowerSystemManager : MonoBehaviour
 
     public void AddSolarPanel(GameObject solarPanel)
     {
+        if (solarPanel.GetComponent<SolarPanel>() == null)
+            throw new Exception($"Mate {solarPanel.name} is not a SolarPanel!");
+
         if (_solarPanels.Count < _solarPanelCapacity)
             _solarPanels.Add(solarPanel);
     }
 
     public void AddBattery(GameObject battery)
     {
+        if (battery.GetComponent<Battery>() == null)
+            throw new Exception($"Mate {battery.name} is not a Battery!");
+
         _batteries.Add(battery);
 
         _energyCapacity += battery.GetComponent<Battery>().Capacity;
@@ -98,6 +104,9 @@ public class PowerSystemManager : MonoBehaviour
 
     public void AddElectricalBox(GameObject electricalBox)
     {
+        if (electricalBox.GetComponent<ElectricalBox>() == null)
+            throw new Exception($"Mate {electricalBox.name} is not a ElectricalBox!");
+
         _electricBoxes.Add(electricalBox);
 
         _solarPanelCapacity += electricalBox.GetComponent<ElectricalBox>().SolarPanelCapacity;

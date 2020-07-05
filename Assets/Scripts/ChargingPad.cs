@@ -11,11 +11,22 @@ public class ChargingPad : MonoBehaviour
     [SerializeField] private float chargingSpeed = 1f;
     [SerializeField] private float pricePerWat = 2f;
 
+    public Transform EntryPoint;
+
+    public bool Available => !_charging;
+
+    private void Start()
+    {
+        
+    }
+
     private void Update()
     {
         if (_charging)
         {
-            float amountToCharge = PowerSystemManager.Instance.GetEnergy(chargingSpeed * Time.deltaTime);
+            float desiredAmount = Mathf.Clamp(chargingSpeed * Time.deltaTime, 0f, _carCharging.MaxCapacity - _carCharging.currentEnergy);
+
+            float amountToCharge = PowerSystemManager.Instance.GetEnergy(desiredAmount);
 
             _carCharging.currentEnergy += amountToCharge;
             BuildManager.Instance.Balance += amountToCharge * pricePerWat;
@@ -37,5 +48,15 @@ public class ChargingPad : MonoBehaviour
     {
         _charging = false;
         _carCharging = null;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (EntryPoint == null)
+            return;
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, .5f);
+        Gizmos.DrawSphere(EntryPoint.position, .5f);
     }
 }

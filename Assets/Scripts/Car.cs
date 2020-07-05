@@ -8,10 +8,12 @@ public class Car : MonoBehaviour
 {
     [SerializeField] private float batteryCapacity = 300;
 
-    [HideInInspector] public float currentEnergy;
+    public float currentEnergy;
+
+    public float MaxCapacity => batteryCapacity;
 
     private void Awake()
     {
-        currentEnergy = Random.Range(20f, batteryCapacity);
+        currentEnergy = Random.Range(20f, batteryCapacity - 50f);
     }
 }
