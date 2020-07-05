@@ -19,13 +19,6 @@ public class BuildManager : MonoBehaviour
     private Transform _nextChargingStation;
     private int _chargingStationsCount = 0;
 
-    // This disappear once UI is done
-    [Header("Prefabs")]
-    [SerializeField] private GameObject batteryPrefab;
-    [SerializeField] private GameObject solarPanelPrefab;
-    [SerializeField] private GameObject electricalBoxPrefab;
-    [SerializeField] private GameObject chargingStationPrefab;
-
     [SerializeField] private Transform firstChargingStation;
     [SerializeField] private int maxChargingStations = 3;
 
@@ -58,31 +51,6 @@ public class BuildManager : MonoBehaviour
     private void Start()
     {
         Balance = initialBalance;
-    }
-
-    private void Update()
-    {
-        if (Keyboard.current.digit1Key.wasPressedThisFrame)
-        {
-            currentlyBuilding = solarPanelPrefab;
-        }
-        else if (Keyboard.current.digit2Key.wasPressedThisFrame)
-        {
-            currentlyBuilding = electricalBoxPrefab;
-        }
-        else if (Keyboard.current.digit3Key.wasPressedThisFrame)
-        {
-            currentlyBuilding = batteryPrefab;
-        }
-        else if (Keyboard.current.digit0Key.wasPressedThisFrame)
-        {
-            currentlyBuilding = null;
-        }
-
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            BuildChargingStation(chargingStationPrefab);
-        }
     }
 
     private void Build()
