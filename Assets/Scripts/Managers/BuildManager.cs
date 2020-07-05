@@ -16,12 +16,18 @@ public class BuildManager : MonoBehaviour
     
     private Camera _camera;
 
+    private Transform _nextChargingStation;
+    private int _chargingStationsCount = 0;
+
     // This disappear once UI is done
     [Header("Prefabs")]
     [SerializeField] private GameObject batteryPrefab;
     [SerializeField] private GameObject solarPanelPrefab;
     [SerializeField] private GameObject electricalBoxPrefab;
     [SerializeField] private GameObject chargingStationPrefab;
+
+    [SerializeField] private Transform firstChargingStation;
+    [SerializeField] private int maxChargingStations = 3;
 
     [SerializeField] private float initialBalance = 1000f;
 
@@ -45,6 +51,8 @@ public class BuildManager : MonoBehaviour
         _camera = Camera.main;
 
         _inputActions.Building.Build.performed += ctx => Build();
+
+        _nextChargingStation = firstChargingStation;
     }
 
     private void Start()
@@ -66,13 +74,14 @@ public class BuildManager : MonoBehaviour
         {
             currentlyBuilding = batteryPrefab;
         }
-        else if (Keyboard.current.digit4Key.wasPressedThisFrame)
-        {
-            currentlyBuilding = solarPanelPrefab;
-        }
         else if (Keyboard.current.digit0Key.wasPressedThisFrame)
         {
             currentlyBuilding = null;
+        }
+
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        {
+            BuildChargingStation(chargingStationPrefab);
         }
     }
 
@@ -143,6 +152,27 @@ public class BuildManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void BuildChargingStation(GameObject chargingStationPrefab)
+    {
+        if (_chargingStationsCount >= maxChargingStations)
+            return;
+
+        ChargingStation chargingStation = chargingStationPrefab.GetComponent<ChargingStation>();
+
+        if (Balance < chargingStation.Cost)
+        {
+            // TODO: Sound effect
+
+            return;
+        }
+
+        Balance -= chargingStation.Cost;
+
+        Instantiate(chargingStationPrefab, _nextChargingStation.position, Quaternion.identity);
+
+        _nextChargingStation.Translate(chargingStation.Size.x * 3.5f, 0f, 0f);
     }
 
     private bool IsPositionValid(Plot plot, Slot slot, Vector2Int Size, out Vector2Int topRight, out Vector2Int bottomLeft)
