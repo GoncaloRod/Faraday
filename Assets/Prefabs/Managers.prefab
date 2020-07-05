@@ -46,8 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firstChargingStation: {fileID: 0}
-  maxChargingStations: 3
-  initialBalance: 1000
+  maxChargingStations: 4
+  initialBalance: 20000
   currentlyBuilding: {fileID: 0}
   Balance: 0
 --- !u!114 &1384479388937011159

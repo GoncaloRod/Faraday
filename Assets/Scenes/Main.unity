@@ -4981,11 +4981,6 @@ PrefabInstance:
       propertyPath: firstChargingStation
       value: 
       objectReference: {fileID: 261428170}
-    - target: {fileID: 1384479388937011145, guid: da7df105787ebad4a8046c218259be18,
-        type: 3}
-      propertyPath: maxChargingStations
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 1384479388937011146, guid: da7df105787ebad4a8046c218259be18,
         type: 3}
       propertyPath: m_Name
@@ -13210,6 +13205,16 @@ PrefabInstance:
       propertyPath: topRightCorner
       value: 
       objectReference: {fileID: 2107266102}
+    - target: {fileID: 6322909872690729868, guid: 43702a0b2a53d104ab6155d340c7787b,
+        type: 3}
+      propertyPath: movementSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322909872690729868, guid: 43702a0b2a53d104ab6155d340c7787b,
+        type: 3}
+      propertyPath: rotationSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6322909872690729869, guid: 43702a0b2a53d104ab6155d340c7787b,
         type: 3}
       propertyPath: m_LocalPosition.x
