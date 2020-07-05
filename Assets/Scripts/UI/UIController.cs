@@ -81,6 +81,7 @@ public class UIController : MonoBehaviour
 
     public void Play()
     {
+        Time.timeScale = 1.0f;
         mainMenuUI.SetActive(false);
         gameUI.SetActive(true);
         clickSound.Play();
@@ -90,5 +91,12 @@ public class UIController : MonoBehaviour
     {
         clickSound.Play();
         Application.Quit();
+    }
+
+    public void Menu()
+    {
+        Time.timeScale = 0.0f;
+        mainMenuUI.SetActive(true);
+        clickSound.Play();
     }
 }
