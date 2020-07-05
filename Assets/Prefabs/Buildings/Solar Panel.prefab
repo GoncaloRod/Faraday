@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Solar Panel
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: d7a67d82657711241a9156093494ca86, type: 3}
   cost: 100
   size: {x: 1, y: 1}
   optimumPowerOutput: 10

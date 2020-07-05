@@ -6,27 +6,44 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    #region Singleton
+
+    private static UIController _instance;
+
+    public static UIController Instance => _instance;
+
+    #endregion
+
+    public GameObject gameUI, mainMenuUI;
     public GameObject shopBar;
     public GameObject battery;
-    public TextMeshProUGUI balanceText;
+    public TextMeshProUGUI balanceText, carsChargingText;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        if (_instance != null && _instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float energyInput = PowerSystemManager.Instance.CurrentEnergyInput;
-        float energyOutput = PowerSystemManager.Instance.CurrentEnergyOutput;
-        float energyConverted = PowerSystemManager.Instance.StoredEnergy / PowerSystemManager.Instance.EnergyCapacity;
-        if(energyConverted > 0.0f) 
-            BatteryController.Instance.SetCharge((int) (energyConverted * 10));
-
-        BatteryController.Instance.SetInputAndOutput(energyInput, energyOutput);
-        UpdateBalanceText();
+        if (gameUI.activeSelf)
+        {
+            Time.timeScale = 1.0f;
+            UpdateUI();
+        }
+        else
+        {
+            Time.timeScale = 0.0f;
+        }
+            
     }
 
     public void ToggleShopBar()
@@ -48,5 +65,27 @@ public class UIController : MonoBehaviour
         }
     }
 
-    private void UpdateBalanceText() => balanceText.SetText($"{BuildManager.Instance.Balance:F2}");
+    private void UpdateUI()
+    {
+        float energyInput = PowerSystemManager.Instance.CurrentEnergyInput;
+        float energyOutput = PowerSystemManager.Instance.CurrentEnergyOutput;
+        float energyConverted = PowerSystemManager.Instance.StoredEnergy / PowerSystemManager.Instance.EnergyCapacity;
+        if (energyConverted > 0.0f)
+            BatteryController.Instance.SetCharge((int)(energyConverted * 10));
+
+        BatteryController.Instance.SetInputAndOutput(energyInput, energyOutput);
+        balanceText.SetText($"{BuildManager.Instance.Balance:F2}");
+        carsChargingText.SetText($"{ChargingPadManager.Instance.SlotsInUse}");
+    }
+
+    public void Play()
+    {
+        mainMenuUI.SetActive(false);
+        gameUI.SetActive(true);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
 }

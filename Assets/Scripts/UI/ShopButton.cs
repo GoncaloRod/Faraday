@@ -21,4 +21,15 @@ public class ShopButton : MonoBehaviour
         buttonImage.image.sprite = _building.Icon;
     }
 
+    public void BuyBuilding()
+    {
+        if(BuildManager.Instance.Balance >= _building.Cost)
+            BuildManager.Instance.currentlyBuilding = buildPrefab;
+    }
+
+    public void BuyChargeStation()
+    {
+
+    }
+
 }

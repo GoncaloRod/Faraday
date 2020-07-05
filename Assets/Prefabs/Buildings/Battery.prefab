@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Battery
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 866406492b968db4bb12463247f2b7da, type: 3}
   cost: 100
   size: {x: 3, y: 1}
   capacity: 1000
