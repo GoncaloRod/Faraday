@@ -29,7 +29,8 @@ public class ShopButton : MonoBehaviour
 
     public void BuyChargeStation()
     {
-
+        if (BuildManager.Instance.Balance >= _building.Cost)
+            BuildManager.Instance.BuildChargingStation(buildPrefab);
     }
 
 }

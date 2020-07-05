@@ -18,6 +18,7 @@ public class UIController : MonoBehaviour
     public GameObject shopBar;
     public GameObject battery;
     public TextMeshProUGUI balanceText, carsChargingText;
+    public AudioSource clickSound;
 
     private void Awake()
     {
@@ -48,7 +49,7 @@ public class UIController : MonoBehaviour
 
     public void ToggleShopBar()
     {
-        float shopBarHeight = shopBar.GetComponent<RectTransform>().rect.height / 1.65f ;
+        float shopBarHeight = shopBar.GetComponent<RectTransform>().rect.height / 1.5f;
 
         RectTransform battRectTransform = battery.GetComponent<RectTransform>();
         if (!shopBar.activeSelf)
@@ -82,10 +83,12 @@ public class UIController : MonoBehaviour
     {
         mainMenuUI.SetActive(false);
         gameUI.SetActive(true);
+        clickSound.Play();
     }
 
     public void Quit()
     {
+        clickSound.Play();
         Application.Quit();
     }
 }
