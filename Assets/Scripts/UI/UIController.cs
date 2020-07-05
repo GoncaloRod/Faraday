@@ -49,7 +49,7 @@ public class UIController : MonoBehaviour
 
     public void ToggleShopBar()
     {
-        float shopBarHeight = shopBar.GetComponent<RectTransform>().rect.height / 1.5f;
+        float shopBarHeight = shopBar.GetComponent<RectTransform>().rect.height / 1.2f;
 
         RectTransform battRectTransform = battery.GetComponent<RectTransform>();
         if (!shopBar.activeSelf)
