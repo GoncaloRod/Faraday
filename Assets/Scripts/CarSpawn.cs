@@ -6,17 +6,18 @@ public class CarSpawn : MonoBehaviour
 {
     private float _timer;
 
+    [SerializeField] private float spawnTime = 10f;
     [SerializeField] private GameObject[] carPrefabs;
 
     private void Update()
     {
         _timer += Time.deltaTime;
 
-        if (_timer >= 5f)
+        if (_timer >= spawnTime)
         {
             ChargingPad pad = ChargingPadManager.Instance.GetChargingPad();
 
-            if (pad != null)
+            if (ChargingPadManager.Instance.SlotsInUse < ChargingPadManager.Instance.TotalSlots)
             {
                 if (carPrefabs.Length > 0)
                 {
