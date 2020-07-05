@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Electrical Box
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: 80c9f666efee44c44a7aa5f6ce507d9d, type: 3}
   cost: 100
   size: {x: 1, y: 1}
+  solarPanelCapacity: 6
 --- !u!1 &7650732911889514537
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +122,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
