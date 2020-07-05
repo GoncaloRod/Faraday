@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb4c6812bac33043bb9177142397937, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 30
   batteryCapacity: 300
   currentEnergy: 0
 --- !u!65 &2457991382175931253
