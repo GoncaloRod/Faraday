@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Electrical Box
   icon: {fileID: 21300000, guid: 80c9f666efee44c44a7aa5f6ce507d9d, type: 3}
-  cost: 100
+  cost: 5000
   size: {x: 1, y: 1}
   solarPanelCapacity: 6
 --- !u!1001 &1427362975005280858
