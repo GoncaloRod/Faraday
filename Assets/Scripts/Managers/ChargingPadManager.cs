@@ -3,13 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChangingPadManager : MonoBehaviour
+public class ChargingPadManager : MonoBehaviour
 {
     #region Singleton
 
-    private static ChangingPadManager _instance;
+    private static ChargingPadManager _instance;
 
-    public static ChangingPadManager Instance => _instance;
+    public static ChargingPadManager Instance => _instance;
 
     #endregion
 

@@ -105,10 +105,6 @@ public class BuildManager : MonoBehaviour
 
                 if (IsPositionValid(plot, slot, building.Size, out Vector2Int topRight, out Vector2Int bottomLeft))
                 {
-                    GameObject buildingObject = Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
-
-                    Balance -= building.Cost;
-
                     // Mark slots as unavailable
                     for (int y = bottomLeft.y; y <= topRight.y; y++)
                     {
@@ -118,16 +114,30 @@ public class BuildManager : MonoBehaviour
                         }
                     }
 
+                    GameObject buildingObject;
+
                     switch (building)
                     {
                         case SolarPanel solarPanel:
-                            PowerSystemManager.Instance.AddSolarPanel(buildingObject);
+                            if (PowerSystemManager.Instance.SolarPanelCount < PowerSystemManager.Instance.SolarPanelCapacity)
+                            {
+                                buildingObject = Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
+                                PowerSystemManager.Instance.AddSolarPanel(buildingObject);
+
+                                Balance -= building.Cost;
+                            }
                             break;
                         case Battery battery:
+                            buildingObject = Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
                             PowerSystemManager.Instance.AddBattery(buildingObject);
+
+                            Balance -= building.Cost;
                             break;
                         case ElectricalBox electricalBox:
+                            buildingObject = Instantiate(currentlyBuilding, slot.WorldPosition, Quaternion.identity);
                             PowerSystemManager.Instance.AddElectricalBox(buildingObject);
+
+                            Balance -= building.Cost;
                             break;
                     }
                 }

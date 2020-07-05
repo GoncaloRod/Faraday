@@ -13,11 +13,11 @@ public class ChargingPad : MonoBehaviour
 
     public Transform EntryPoint;
 
-    public bool Available => !_charging;
+    public bool Available = true;
 
     private void Start()
     {
-        
+        ChargingPadManager.Instance.AddChargingPad(gameObject);
     }
 
     private void Update()
