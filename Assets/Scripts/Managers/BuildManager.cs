@@ -68,10 +68,10 @@ public class BuildManager : MonoBehaviour
             {
                 Building building = currentlyBuilding.GetComponent<Building>();
 
-                if (Balance < building.Cost)
+                if (Balance <= building.Cost)
                 {
                     // TODO: Sound effect
-                    AudioManager.Instance.PlayBuildSound();
+                    
                     
                     return;
                 }
@@ -119,6 +119,7 @@ public class BuildManager : MonoBehaviour
                             break;
                     }
                     currentlyBuilding = null;
+                    AudioManager.Instance.PlayBuildSound();
                 }
             }
         }
@@ -131,11 +132,9 @@ public class BuildManager : MonoBehaviour
 
         ChargingStation chargingStation = chargingStationPrefab.GetComponent<ChargingStation>();
 
-        if (Balance < chargingStation.Cost)
+        if (Balance <= chargingStation.Cost)
         {
             // TODO: Sound effect
-            AudioManager.Instance.PlayBuildSound();
-
             return;
         }
 
@@ -144,6 +143,7 @@ public class BuildManager : MonoBehaviour
         Instantiate(chargingStationPrefab, _nextChargingStation.position, Quaternion.identity);
 
         _nextChargingStation.Translate(chargingStation.Size.x * 3.5f, 0f, 0f);
+        AudioManager.Instance.PlayBuildSound();
     }
 
     private bool IsPositionValid(Plot plot, Slot slot, Vector2Int Size, out Vector2Int topRight, out Vector2Int bottomLeft)

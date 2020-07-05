@@ -25,14 +25,20 @@ public class ShopButton : MonoBehaviour
 
     public void BuyBuilding()
     {
-        if(BuildManager.Instance.Balance >= _building.Cost)
+        if (BuildManager.Instance.Balance >= _building.Cost)
+        {
+            AudioManager.Instance.PlayClickSound();
             BuildManager.Instance.currentlyBuilding = buildPrefab;
+        }
     }
 
     public void BuyChargeStation()
     {
         if (BuildManager.Instance.Balance >= _building.Cost)
+        {
+            AudioManager.Instance.PlayClickSound();
             BuildManager.Instance.BuildChargingStation(buildPrefab);
+        }
     }
 
 }

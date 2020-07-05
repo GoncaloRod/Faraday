@@ -56,11 +56,14 @@ public class UIController : MonoBehaviour
         {
             battRectTransform.position = new Vector3(battRectTransform.position.x, battRectTransform.position.y + shopBarHeight);
             shopBar.SetActive(true);
+            AudioManager.Instance.StopChillMusic();
+            AudioManager.Instance.PlayBuildingMusic();
         }
         else
         {
             battRectTransform.position = new Vector3(battRectTransform.position.x, battRectTransform.position.y - shopBarHeight);
             shopBar.SetActive(false);
+            AudioManager.Instance.StopBuildingMusic();
         }
     }
 
@@ -82,12 +85,16 @@ public class UIController : MonoBehaviour
         mainMenuUI.SetActive(false);
         gameUI.SetActive(true);
         clickSound.Play();
+        AudioManager.Instance.mainMenuMusic.Stop();
+        AudioManager.Instance.PlayChillMusic();
+
     }
 
     public void Quit()
     {
         clickSound.Play();
         Application.Quit();
+        AudioManager.Instance.mainMenuMusic.Stop();
     }
 
     public void Menu()

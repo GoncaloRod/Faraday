@@ -12741,6 +12741,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 250558983033183658, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 250558983033183658, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 250558983033183658, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 250558983033183658, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 593727996013602064, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
         type: 3}
       propertyPath: m_textInfo.characterCount
@@ -12782,6 +12802,46 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1604724127832772524, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500116912695755311, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500116912695755311, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500116912695755311, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2500116912695755311, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841656577923127088, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841656577923127088, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841656577923127088, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841656577923127088, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -12812,6 +12872,26 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6241203470098632454, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137686821956278590, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137686821956278590, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137686821956278590, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7137686821956278590, guid: 50df4ba78ea4c6a4a9cce2cd748079e8,
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 0
@@ -18867,6 +18947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9b0427b22a98e47809fcd923b007c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTime: 10
   carPrefabs:
   - {fileID: 4446907940133544807, guid: 59e9b45fd6802b545ab5d6e59734906d, type: 3}
 --- !u!4 &1970446105
