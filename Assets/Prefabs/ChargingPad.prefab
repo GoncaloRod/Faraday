@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chargingSpeed: 5
-  pricePerWat: 2
+  pricePerWat: 5
   EntryPoint: {fileID: 4184543547165677747}
   Available: 1
 --- !u!1 &8888306300876095422
